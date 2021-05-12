@@ -24,7 +24,6 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         //$a = $this->getDoctrine()->getRepository(Post::class)->findAll();
-        //dd($a);
         return Dashboard::new()
             ->setTitle('Poezii de luni');
     }
