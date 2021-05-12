@@ -86,8 +86,7 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrine:migrations:diff -q",
-            "php bin/console doctrine:migrations:migrate -q"
+            "php bin/console doctrine:schema:update"
         ]
     },
     "conflict": {

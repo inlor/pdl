@@ -67,7 +67,7 @@ trait TraitTimestamp
     {
         $now = new DateTime();
         $this->setUpdatedAt($now);
-        if ($this->getId() === null) {
+        if ($this->createdAt === null) {
             $this->setCreatedAt($now);
         }
     }

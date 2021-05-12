@@ -3,11 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 
-class UserCrudController extends AbstractCrudController
+class UserCrudController extends DefaultCrudController
 {
     public static function getEntityFqcn(): string
     {
@@ -17,7 +15,8 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('email'),
+            TextField::new('email')
+                ->setRequired(true),
         ];
     }
 }
