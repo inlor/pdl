@@ -19,7 +19,8 @@ jobs:
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v2
+      - uses: actions/cache@v2
+      - uses: nanasess/setup-php@master
       with:
         php-version: '7.4'
         path: vendor
