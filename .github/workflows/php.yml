@@ -27,9 +27,10 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      uses: nanasess/setup-php@master
+      uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
+        coverage: none
       run: composer install --prefer-dist --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
