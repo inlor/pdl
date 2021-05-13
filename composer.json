@@ -1,6 +1,8 @@
 {
     "type": "project",
     "license": "proprietary",
+    "name": "inlor/pdl",
+    "description": "Blog for posts",
     "require": {
         "php": ">=7.2.5",
         "ext-ctype": "*",
