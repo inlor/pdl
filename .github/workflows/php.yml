@@ -26,12 +26,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      - uses: shivammathur/setup-php@v2
+    - name: 'Install PHP '
+      uses: shivammathur/setup-php@2.7.0
       with:
-        php-version: '7.4'
         coverage: none
-      - run: composer install --prefer-dist --no-progress
+        php-version: '7.4'
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
