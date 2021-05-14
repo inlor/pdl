@@ -18,12 +18,11 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        return $this->render('admin/base.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
-        //$a = $this->getDoctrine()->getRepository(Post::class)->findAll();
         return Dashboard::new()
             ->setTitle('Poezii de luni');
     }

@@ -14,9 +14,11 @@ class ThemeCrudController extends DefaultCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $fields = [
             TextField::new('title')
                 ->setRequired(true),
         ];
+
+        return array_merge($fields, parent::configureFields($pageName));
     }
 }

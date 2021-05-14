@@ -6,6 +6,7 @@ use App\Entity\Traits\TraitTimestamp;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -33,6 +34,7 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Unique()
      */
     private $slug;
 

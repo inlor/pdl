@@ -1,0 +1,17 @@
+<div class="card text-center m-sm-1 m-md-3 m-lg-5">
+    <div class="card-header">
+        {{ post.theme.title }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">
+            {{ post.content | replace({'<div>': '', '<br>': ' '}) | slice(0, 50) ~ '...' }}
+        </p>
+        <div>
+            <a href="{{ url('post_show', {'slug': post.slug}) }}" class="btn btn-primary">Citeşte</a>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        {{ post.createdAt|date('d/m/Y') }}
+    </div>
+</div>

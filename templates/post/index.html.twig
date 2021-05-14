@@ -1,41 +1,37 @@
 {% extends 'base.html.twig' %}
 
+{% do pagination.setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig') %}
+
 {% block title %}Post index{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    <div class="container m-sm-1 m-md-3 m-lg-5">
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link {{ currentTheme is null ? 'active' : '' }}" aria-current="true" href="{{ url('post_index') }}">Toate</a>
+                    </li>
+                    {% for theme in themes %}
+                        <li class="nav-item">
+                            <a class="nav-link {{ (currentTheme is not null) and theme.id == currentTheme.id ? 'active' : ''}}" aria-current="true" href="{{ url('post_index', {'theme' : theme.id}) }}">{{ theme.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Slug</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.content }}</td>
-                <td>{{ post.slug }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="card-body">
+                {% for post in pagination %}
+                    {% include './post/proposal.html.twig' with {'post': post } only %}
+                {% endfor %}
+            </div>
+
+            <div class="card-footer">
+                <div class="navigation mt-3">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -14,9 +14,11 @@ class UserCrudController extends DefaultCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $fields = [
             TextField::new('email')
                 ->setRequired(true),
         ];
+
+        return array_merge($fields, parent::configureFields($pageName));
     }
 }
